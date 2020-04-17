@@ -20,14 +20,15 @@ class MyCylinder extends CGFobject {
     this.normals = [];
     this.texCoords = [];
 
-    var theta;
+    var theta = 0;
     var thetaInc = (2 * Math.PI) / this.slices;
+    var texturePos = 0;
+    var textureInc = 1/this.slices;
 
-    theta = 0;
     for (let indice = 0; indice <= this.slices; indice++) {
       //--- Vertices coordinates
       var x = Math.cos(theta);
-      var z = Math.sin(theta);
+      var z = -Math.sin(theta);     // Simétrico do sin, para aplicar a textura da Terra
       this.vertices.push(x, 0, z);  // Vertice da base inferior
       this.vertices.push(x, 1, z);  // Vertice da base superior
 
@@ -40,13 +41,16 @@ class MyCylinder extends CGFobject {
       }
 
       //--- Normals
-      this.normals.push(Math.cos(theta), 0, Math.sin(theta));
-      this.normals.push(Math.cos(theta), 0, Math.sin(theta));
-      theta += thetaInc;
+      this.normals.push(Math.cos(theta), 0, -Math.sin(theta));
+      this.normals.push(Math.cos(theta), 0, -Math.sin(theta));
 
       //--- Texture Coordinates
-      // To be done... 
-      // May need some additional code also in the beginning of the function.
+      this.texCoords.push(texturePos, 1);
+      this.texCoords.push(texturePos, 0);
+
+      //--- Increments
+      theta += thetaInc;
+      texturePos += textureInc;
     }
 
     this.primitiveType = this.scene.gl.TRIANGLES;

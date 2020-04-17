@@ -28,6 +28,18 @@ class MyScene extends CGFscene {
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.cylinder = new MyCylinder(this, 16);
 
+        //Initialize Textures
+        this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
+
+        //Initialize Materials
+        this.material = new CGFappearance(this);
+		this.material.setAmbient(0.3, 0.3, 0.3, 1);
+		this.material.setDiffuse(0.7, 0.7, 0.7, 1);
+		this.material.setSpecular(0.0, 0.0, 0.0, 1);
+        this.material.setShininess(120);
+        this.material.setTexture(this.earthTexture);
+		this.material.setTextureWrap('REPEAT', 'REPEAT');
+
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayCylinder = true;
@@ -68,7 +80,8 @@ class MyScene extends CGFscene {
         if (this.displayAxis)
             this.axis.display();
 
-        this.setDefaultAppearance();
+        //this.setDefaultAppearance();
+        this.material.apply();
 
         // ---- BEGIN Primitive drawing section
 

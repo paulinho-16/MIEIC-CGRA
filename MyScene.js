@@ -26,11 +26,12 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
-        this.cylinder = new MyCylinder(this, 16, 8);
+        this.cylinder = new MyCylinder(this, 16);
 
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayCylinder = true;
+        this.displayNormals = false;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -75,6 +76,10 @@ class MyScene extends CGFscene {
         //this.incompleteSphere.display();
         if (this.displayCylinder)
             this.cylinder.display();
+        if (this.displayNormals)
+            this.cylinder.enableNormalViz();
+        else
+            this.cylinder.disableNormalViz();
 
         // ---- END Primitive drawing section
     }

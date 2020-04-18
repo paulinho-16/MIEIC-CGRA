@@ -42,6 +42,7 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
+        this.displaySphere = false;
         this.displayCylinder = true;
         this.displayNormals = false;
     }
@@ -86,7 +87,8 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        //this.incompleteSphere.display();
+        if (this.displaySphere)
+            this.incompleteSphere.display();
         if (this.displayCylinder)
             this.cylinder.display();
         if (this.displayNormals)

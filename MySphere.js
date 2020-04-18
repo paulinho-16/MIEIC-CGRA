@@ -16,7 +16,6 @@ class MySphere extends CGFobject {
   /**
    * @method initBuffers
    * Initializes the sphere buffers
-   * TODO: DEFINE TEXTURE COORDINATES
    */
   initBuffers() {
     this.vertices = [];
@@ -30,6 +29,11 @@ class MySphere extends CGFobject {
     var thetaInc = (2 * Math.PI) / this.longDivs;
     var latVertices = this.longDivs + 1;
 
+    var textureLatitudePos = 0;
+    var textureLatitudeInc = 1/this.latDivs;
+    var textureLongitudePos = 0.61;
+    var textureLongitudeInc = 1/this.longDivs;
+
     // build an all-around stack at a time, starting on "north pole" and proceeding "south"
     for (let latitude = 0; latitude <= this.latDivs; latitude++) {
       var sinPhi = Math.sin(phi);
@@ -37,6 +41,8 @@ class MySphere extends CGFobject {
 
       // in each stack, build all the slices around, starting on longitude 0
       theta = 0;
+      textureLongitudePos = 0.61;
+
       for (let longitude = 0; longitude <= this.longDivs; longitude++) {
         //--- Vertices coordinates
         var x = Math.cos(theta) * sinPhi;
@@ -62,16 +68,19 @@ class MySphere extends CGFobject {
         // in a sphere of radius equal to one, the vector length is one.
         // therefore, the value of the normal is equal to the position vectro
         this.normals.push(x, y, z);
-        theta += thetaInc;
 
         //--- Texture Coordinates
-        // To be done... 
-        // May need some additional code also in the beginning of the function.
-        
-      }
-      phi += phiInc;
-    }
+        this.texCoords.push(textureLongitudePos, textureLatitudePos);
 
+        //--- Increments da Longitude
+        theta += thetaInc;
+        textureLongitudePos += textureLongitudeInc;
+      }
+
+      //--- Increments da Latitude
+      phi += phiInc;
+      textureLatitudePos += textureLatitudeInc;
+    }
 
     this.primitiveType = this.scene.gl.TRIANGLES;
     this.initGLBuffers();

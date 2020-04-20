@@ -1,5 +1,5 @@
 /**
-* MyVehicle
+* MyPyramid
 * @constructor
 */
 class MyVehicle extends CGFobject {
@@ -57,7 +57,7 @@ class MyVehicle extends CGFobject {
 
             ang+=alphaAng;
         }
-
+        this.indices.push(1,5,4);
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }

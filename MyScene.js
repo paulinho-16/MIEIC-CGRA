@@ -25,39 +25,40 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.cubeMap = new MyCubeMap(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.cylinder = new MyCylinder(this, 16);
+        this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this, 3, 1);
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
-        this.cubeMapTexture = new CGFtexture(this, 'images/cubemap.png');
+        this.map = new CGFtexture(this, 'images/cubemap.jpg');
 
         //Initialize Materials
-        this.earthMaterial = new CGFappearance(this);
-		this.earthMaterial.setAmbient(0.3, 0.3, 0.3, 1);
-		this.earthMaterial.setDiffuse(0.7, 0.7, 0.7, 1);
-		this.earthMaterial.setSpecular(0.0, 0.0, 0.0, 1);
-        this.earthMaterial.setShininess(120);
-        this.earthMaterial.setTexture(this.earthTexture);
-        this.earthMaterial.setTextureWrap('REPEAT', 'REPEAT');
+        this.material = new CGFappearance(this);
+		this.material.setAmbient(0.3, 0.3, 0.3, 1);
+		this.material.setDiffuse(0.7, 0.7, 0.7, 1);
+		this.material.setSpecular(0.0, 0.0, 0.0, 1);
+        this.material.setShininess(120);
+        this.material.setTexture(this.earthTexture);
+        this.material.setTextureWrap('REPEAT', 'REPEAT');
         
-        this.cubeMapMaterial = new CGFappearance(this);
-		this.cubeMapMaterial.setAmbient(1.0, 1.0, 1.0, 1);
-		this.cubeMapMaterial.setDiffuse(0.0, 0.0, 0.0, 1);
-		this.cubeMapMaterial.setSpecular(0.0, 0.0, 0.0, 1);
-        this.cubeMapMaterial.setShininess(120);
-        this.cubeMapMaterial.setTexture(this.cubeMapTexture);
-		this.cubeMapMaterial.setTextureWrap('REPEAT', 'REPEAT');
+    
+        this.mapMaterial = new CGFappearance(this);
+        this.mapMaterial.setAmbient(1.0, 1.0, 1.0, 1);
+		this.mapMaterial.setDiffuse(0.0, 0.0, 0.0, 1);
+		this.mapMaterial.setSpecular(0.0, 0.0, 0.0, 1);
+        this.mapMaterial.setShininess(120);
+        this.mapMaterial.setTexture(this.map);
+        this.mapMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
-        this.displayCubeMap = true;
         this.displaySphere = false;
         this.displayCylinder = false;
-        this.displayVehicle = true;
         this.displayNormals = false;
+        this.displayCubeMap = true;
+        this.displayVehicle = false;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -95,13 +96,11 @@ class MyScene extends CGFscene {
             this.axis.display();
 
         //this.setDefaultAppearance();
-        //this.earthMaterial.apply();
+        this.material.apply();
 
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-
-        this.earthMaterial.apply();
 
         if (this.displaySphere)
             this.incompleteSphere.display();
@@ -112,17 +111,22 @@ class MyScene extends CGFscene {
         else
             this.cylinder.disableNormalViz();
 
-        this.setDefaultAppearance();
 
+        this.pushMatrix();
+        this.rotate(Math.PI/2,1,0,0);
         if (this.displayVehicle)
             this.vehicle.display();
+        this.popMatrix();
 
-        this.cubeMapMaterial.apply();
+        this.setDefaultAppearance();
         this.pushMatrix();
-        this.scale(50, 50, 50);
+        //this.setDefaultAppearance();
+        this.mapMaterial.apply();
+        this.scale(50,50,50);
         if (this.displayCubeMap)
             this.cubeMap.display();
         this.popMatrix();
+
         // ---- END Primitive drawing section
     }
 }

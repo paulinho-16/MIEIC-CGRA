@@ -138,69 +138,67 @@ class MyCubeMap extends CGFobject {
     
     for (let i = 0 ; i <= 3 ; i++) {
       this.indices.push(8 + 4*i);       // 8    // 9
-      //this.indices.push(8 + 4*i + 1);   // 9    // 10
       this.indices.push(8 + 4*i + 3);   // 11   // 11
       this.indices.push(8 + 4*i + 1);   // 9    // 10
       this.indices.push(8 + 4*i + 1);   // 9    //12
-      //this.indices.push(8 + 4*i + 2);   // 10
       this.indices.push(8 + 4*i + 3);   //11
       this.indices.push(8 + 4*i + 2);   // 10
     }
 
     //--- Texture Coordinates
 
-    /*this.texCoords.push(0.5, 0.67);   // Vertice 0
+    /*this.texCoords.push(0.5, 0.65);   // Vertice 0
     this.texCoords.push(0.5, 1.0);    // Vertice 1
     this.texCoords.push(0.25, 1.0);   // Vertice 2
-    this.texCoords.push(0.25, 0.67);  // Vertice 3
-    this.texCoords.push(0.25, 0.33);  // Vertice 4
+    this.texCoords.push(0.25, 0.65);  // Vertice 3
+    this.texCoords.push(0.25, 0.34);  // Vertice 4
     this.texCoords.push(0.5, 0.0);    // Vertice 5
     this.texCoords.push(0.25, 0.0);   // Vertice 6
-    this.texCoords.push(0.25, 0.33);  // Vertice 7
+    this.texCoords.push(0.25, 0.34);  // Vertice 7
 
-    this.texCoords.push(0.5, 0.67);   // Vertice 0
-    this.texCoords.push(0.75, 0.67);  // Vertice 1
-    this.texCoords.push(0.0, 0.67);   // Vertice 2
-    this.texCoords.push(0.25, 0.67);  // Vertice 3
-    this.texCoords.push(0.25, 0.33);  // Vertice 4
-    this.texCoords.push(0.75, 0.33);  // Vertice 5
-    this.texCoords.push(0.0, 0.33);   // Vertice 6
-    this.texCoords.push(0.25, 0.33);  // Vertice 7
+    this.texCoords.push(0.5, 0.65);   // Vertice 0
+    this.texCoords.push(0.75, 0.65);  // Vertice 1
+    this.texCoords.push(0.0, 0.65);   // Vertice 2
+    this.texCoords.push(0.25, 0.65);  // Vertice 3
+    this.texCoords.push(0.25, 0.34);  // Vertice 4
+    this.texCoords.push(0.75, 0.34);  // Vertice 5
+    this.texCoords.push(0.0, 0.34);   // Vertice 6
+    this.texCoords.push(0.25, 0.34);  // Vertice 7
 
-    this.texCoords.push(0.5, 0.67);   // Vertice 0
-    this.texCoords.push(0.75, 0.67);  // Vertice 1
-    this.texCoords.push(1.0, 0.67);   // Vertice 2
-    this.texCoords.push(0.25, 0.67);  // Vertice 3
-    this.texCoords.push(0.25, 0.33);  // Vertice 4
-    this.texCoords.push(0.75, 0.33);  // Vertice 5
-    this.texCoords.push(1.0, 0.33);   // Vertice 6
-    this.texCoords.push(0.25, 0.33);  // Vertice 7*/
+    this.texCoords.push(0.5, 0.65);   // Vertice 0
+    this.texCoords.push(0.75, 0.65);  // Vertice 1
+    this.texCoords.push(1.0, 0.65);   // Vertice 2
+    this.texCoords.push(0.25, 0.65);  // Vertice 3
+    this.texCoords.push(0.25, 0.34);  // Vertice 4
+    this.texCoords.push(0.75, 0.34);  // Vertice 5
+    this.texCoords.push(1.0, 0.34);   // Vertice 6
+    this.texCoords.push(0.25, 0.34);  // Vertice 7*/
 
     Array.prototype.push.apply(this.texCoords,
       [0.5, 1.0,	//0 - Face de Baixo
-      0.5, 0.67, 	//1 - Face de Baixo
-      0.25, 0.67,	//2 - Face de Baixo
+      0.5, 0.65, 	//1 - Face de Baixo
+      0.25, 0.65,	//2 - Face de Baixo
       0.25, 1.0,  //3 - Face de Baixo
       0.5, 0.0,   //4 - Face de Cima
-      0.5, 0.33,  //5 - Face de Cima
-      0.25, 0.33, //6 - Face de Cima
+      0.5, 0.34,  //5 - Face de Cima
+      0.25, 0.34, //6 - Face de Cima
       0.25, 0.0,  //7 - Face de Cima
-      0.75, 0.67,	//0 - Face da Direita
-      0.5, 0.67,	//1 - Face da Direita
-      0.5, 0.33,  //5 - Face da Direita
-      0.75, 0.33, //4 - Face da Direita
-      0.5, 0.67,	//1 - Face de Trás
-      0.25, 0.67,	//2 - Face de Trás
-      0.25, 0.33, //6 - Face de Trás
-      0.5, 0.33,  //5 - Face de Trás
-      0.25, 0.67,	//2 - Face da Esquerda
-      0.0, 0.67,  //3 - Face da Esquerda
-      0.0, 0.33,  //7 - Face da Esquerda
-      0.25, 0.33, //6 - Face da Esquerda
-      1.0, 0.67,  //3 - Face da Frente
-      0.75, 0.67,	//0 - Face da Frente
-      0.75, 0.33, //4 - Face da Frente
-      1.0, 0.33]  //7 - Face da Frente
+      0.75, 0.65,	//0 - Face da Direita
+      0.5, 0.65,	//1 - Face da Direita
+      0.5, 0.34,  //5 - Face da Direita
+      0.75, 0.34, //4 - Face da Direita
+      0.5, 0.65,	//1 - Face de Trás
+      0.25, 0.65,	//2 - Face de Trás
+      0.25, 0.34, //6 - Face de Trás
+      0.5, 0.34,  //5 - Face de Trás
+      0.25, 0.65,	//2 - Face da Esquerda
+      0.0, 0.65,  //3 - Face da Esquerda
+      0.0, 0.34,  //7 - Face da Esquerda
+      0.25, 0.34, //6 - Face da Esquerda
+      1.0, 0.65,  //3 - Face da Frente
+      0.75, 0.65,	//0 - Face da Frente
+      0.75, 0.34, //4 - Face da Frente
+      1.0, 0.34]  //7 - Face da Frente
     );
 
 		//The defined indices (and corresponding vertices)

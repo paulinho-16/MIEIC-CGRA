@@ -32,7 +32,7 @@ class MyScene extends CGFscene {
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
-        this.map = new CGFtexture(this, 'images/cubemap.jpg');
+        this.map = new CGFtexture(this, 'images/cubemap.png');
 
         //Initialize Materials
         this.material = new CGFappearance(this);
@@ -111,16 +111,17 @@ class MyScene extends CGFscene {
         else
             this.cylinder.disableNormalViz();
 
+        this.setDefaultAppearance();
 
         this.pushMatrix();
+        this.translate(0,0,-0.5);
         this.rotate(Math.PI/2,1,0,0);
+        //this.translate(0,0,1);
         if (this.displayVehicle)
             this.vehicle.display();
         this.popMatrix();
 
-        this.setDefaultAppearance();
         this.pushMatrix();
-        //this.setDefaultAppearance();
         this.mapMaterial.apply();
         this.scale(50,50,50);
         if (this.displayCubeMap)

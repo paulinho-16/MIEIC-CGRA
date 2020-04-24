@@ -32,7 +32,7 @@ class MyScene extends CGFscene {
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
-        this.map = new CGFtexture(this, 'images/cubemap.png');
+        this.map = new CGFtexture(this, 'images/NewCubeMap.png');
 
         //Initialize Materials
         this.material = new CGFappearance(this);

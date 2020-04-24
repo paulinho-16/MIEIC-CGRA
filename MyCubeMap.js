@@ -175,14 +175,14 @@ class MyCubeMap extends CGFobject {
     this.texCoords.push(0.25, 0.34);  // Vertice 7*/
 
     Array.prototype.push.apply(this.texCoords,
-      [0.5, 1.0,	//0 - Face de Baixo
-      0.5, 0.65, 	//1 - Face de Baixo
-      0.25, 0.65,	//2 - Face de Baixo
-      0.25, 1.0,  //3 - Face de Baixo
-      0.5, 0.0,   //4 - Face de Cima
-      0.5, 0.34,  //5 - Face de Cima
-      0.25, 0.34, //6 - Face de Cima
-      0.25, 0.0,  //7 - Face de Cima
+      [0.49, 1.0,	//0 - Face de Baixo
+      0.49, 0.65, 	//1 - Face de Baixo
+      0.26, 0.65,	//2 - Face de Baixo
+      0.26, 1.0,  //3 - Face de Baixo
+      0.49, 0.0,   //4 - Face de Cima
+      0.49, 0.34,  //5 - Face de Cima
+      0.26, 0.34, //6 - Face de Cima
+      0.26, 0.0,  //7 - Face de Cima
       0.75, 0.65,	//0 - Face da Direita
       0.5, 0.65,	//1 - Face da Direita
       0.5, 0.34,  //5 - Face da Direita

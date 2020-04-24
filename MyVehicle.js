@@ -10,7 +10,7 @@ class MyVehicle extends CGFobject {
         this.orientation = 0;
         this.speed = 0;
         this.position = [0,0,0];
-        this.pyramid = new MyPyramid(scene, 4);
+        this.pyramid = new MyPyramid(scene, 3);
         this.scalef=1.0;
     }
 

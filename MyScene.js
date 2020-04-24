@@ -78,6 +78,26 @@ class MyScene extends CGFscene {
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
         //To be done...
+        this.checkKeys();
+        this.vehicle.update();
+    }
+    checkKeys() {
+        var text = "Keys pressed: ";
+        var keysPressed = false;
+
+        // Check for key codes e.g. in https://keycode.info/
+        if (this.gui.isKeyPressed("KeyW")) {
+            text += " W ";
+            this.vehicle.accelerate(0.1);
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyS")) {
+            text += " S ";
+            this.vehicle.accelerate(-0.1);
+            keysPressed = true;
+        }
+        if (keysPressed)
+            console.log(text);
     }
 
     display() {
@@ -113,13 +133,8 @@ class MyScene extends CGFscene {
 
         this.setDefaultAppearance();
 
-        this.pushMatrix();
-        this.translate(0,0,-0.5);
-        this.rotate(Math.PI/2,1,0,0);
-        //this.translate(0,0,1);
         if (this.displayVehicle)
             this.vehicle.display();
-        this.popMatrix();
 
         this.pushMatrix();
         this.mapMaterial.apply();

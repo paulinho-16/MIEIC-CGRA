@@ -29,6 +29,8 @@ class MyScene extends CGFscene {
         this.cylinder = new MyCylinder(this, 16);
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this, 3, 1);
+        this.speedFactor = 1.0;
+        this.scaleFactor = 1.0;
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
@@ -88,7 +90,7 @@ class MyScene extends CGFscene {
         // Check for key codes e.g. in https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
             text += " W ";
-            this.vehicle.accelerate(0.1);
+            this.vehicle.accelerate(0.1*this.speedFactor);
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyA")) {
@@ -98,7 +100,7 @@ class MyScene extends CGFscene {
         }
         if (this.gui.isKeyPressed("KeyS")) {
             text += " S ";
-            this.vehicle.accelerate(-0.1);
+            this.vehicle.accelerate(-0.1*this.speedFactor);
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyD")) {
@@ -148,8 +150,12 @@ class MyScene extends CGFscene {
 
         this.setDefaultAppearance();
 
+        this.vehicle.scaleVehicle(this.scaleFactor);
+
         if (this.displayVehicle)
+        {
             this.vehicle.display();
+        }
 
         this.pushMatrix();
         this.mapMaterial.apply();

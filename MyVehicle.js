@@ -10,7 +10,8 @@ class MyVehicle extends CGFobject {
         this.orientation = 0;
         this.speed = 0;
         this.position = [0,0,0];
-        this.pyramid = new MyPyramid(scene, 3);
+        this.pyramid = new MyPyramid(scene, 4);
+        this.scalef=1.0;
     }
 
     update() {
@@ -34,8 +35,15 @@ class MyVehicle extends CGFobject {
         this.position = [0,0,0];
     }
 
+    scaleVehicle(scaleFactor)
+    {
+        this.scalef = scaleFactor;
+    }
+
     display() {
         this.scene.pushMatrix(); 
+
+        this.scene.scale(this.scalef,this.scalef,this.scalef);
 
         this.scene.translate(this.position[0], this.position[1], this.position[2]);
         this.scene.rotate(this.orientation,0,1,0);

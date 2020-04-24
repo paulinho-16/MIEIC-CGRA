@@ -106,6 +106,11 @@ class MyScene extends CGFscene {
             this.vehicle.turn(-Math.PI/8);
             keysPressed = true;
         }
+        if (this.gui.isKeyPressed("KeyR")) {
+            text += " R ";
+            this.vehicle.reset();
+            keysPressed = true;
+        }
         if (keysPressed)
             console.log(text);
     }

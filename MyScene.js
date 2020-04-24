@@ -31,7 +31,6 @@ class MyScene extends CGFscene {
         this.vehicle = new MyVehicle(this, 3, 1);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
-        this.selectedTexture = 1;  
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
@@ -55,8 +54,8 @@ class MyScene extends CGFscene {
         this.mapMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Textures
-        this.texture1 = new CGFtexture(this, 'images/cubemap.png');
-        this.texture2 = new CGFtexture(this, 'images/NewCubeMap.png');
+        this.Default = new CGFtexture(this, 'images/cubemap.png');
+        this.Plane = new CGFtexture(this, 'images/NewCubeMap.png');
 
         //Set default Texture
         this.mapMaterial.setTexture(this.map);
@@ -67,10 +66,12 @@ class MyScene extends CGFscene {
         this.displayCylinder = false;
         this.displayNormals = false;
         this.displayCubeMap = true;
-        this.displayVehicle = false;
+        this.displayVehicle = true;
+        this.selectedTexture = -1;  
 
-        this.textures = [this.texture1, this.texture2];
-        this.textureIds = { 'cubemap': 0, 'NewCubeMap': 1};
+        //Arrays of textures and Textures ID
+        this.textures = [this.Default, this.Plane];
+        this.textureIds = { 'Default': 0, 'Plain': 1};
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);

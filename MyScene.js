@@ -29,7 +29,6 @@ class MyScene extends CGFscene {
         this.cylinder = new MyCylinder(this, 16);
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this);
-        this.t=new MyRudder(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;  
@@ -41,6 +40,8 @@ class MyScene extends CGFscene {
         this.forest = new CGFtexture(this, 'images/Forest.png');
         this.sunset = new CGFtexture(this, 'images/Sunset.png');
         this.mountain = new CGFtexture(this, 'images/Mountain.png');
+        this.airshipBody = new CGFtexture(this, 'images/AirShipBody.jpeg');
+        this.waggon = new CGFtexture(this, 'images/Waggon.jpg');
 
         //Arrays of textures and Textures ID
         this.textures = [this.default, this.plain, this.forest, this.sunset, this.mountain];
@@ -70,6 +71,22 @@ class MyScene extends CGFscene {
         this.defaultMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.defaultMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.defaultMaterial.setShininess(10.0);
+
+        this.airshipBodyMaterial = new CGFappearance(this);
+        this.airshipBodyMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+        this.airshipBodyMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+        this.airshipBodyMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+        this.airshipBodyMaterial.setShininess(10.0);
+        this.airshipBodyMaterial.setTexture(this.airshipBody);
+        this.airshipBodyMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.waggonMaterial = new CGFappearance(this);
+        this.waggonMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+        this.waggonMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+        this.waggonMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+        this.waggonMaterial.setShininess(10.0);
+        this.waggonMaterial.setTexture(this.waggon);
+        this.waggonMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -182,9 +199,6 @@ class MyScene extends CGFscene {
         if (this.displayCubeMap)
             this.cubeMap.display();
         this.popMatrix();
-
-        this.rotate(Math.PI/2,0,0,1);
-        this.t.display();
 
         // ---- END Primitive drawing section
     }

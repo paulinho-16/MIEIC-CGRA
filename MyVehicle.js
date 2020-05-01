@@ -85,7 +85,8 @@ class MyVehicle extends CGFobject {
         // Display Body
         this.scene.pushMatrix();
         this.scene.scale(1,1,2);
-        this.scene.rotate(Math.PI/2,1,0,0);        
+        this.scene.rotate(Math.PI/2,1,0,0);
+        this.scene.airshipBodyMaterial.apply();      
         this.body.display();
         this.scene.popMatrix();
 
@@ -94,6 +95,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0, -1.07 , -0.5);
         this.scene.scale(0.15,0.15,1);
         this.scene.rotate(Math.PI/2,1,0,0);
+        this.scene.waggonMaterial.apply();
         this.waggonBody.display();
         this.scene.popMatrix();
 
@@ -102,6 +104,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0, -1.07, 0.5);
         this.scene.scale(0.148, 0.148, 0.148);
         this.scene.rotate(Math.PI/2,1,0,0);
+        this.scene.waggonMaterial.apply();
         this.waggonEnd.display();
         this.scene.popMatrix();
 
@@ -110,8 +113,11 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0, -1.07 , -0.5);
         this.scene.scale(0.148, 0.148, 0.148);
         this.scene.rotate(Math.PI/2,1,0,0);
+        this.scene.waggonMaterial.apply();
         this.waggonEnd.display();
         this.scene.popMatrix();
+
+        this.scene.defaultMaterial.apply();
 
         this.scene.pushMatrix();
         //this.scene.translate(0, 0, -0.2);

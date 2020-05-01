@@ -29,6 +29,7 @@ class MyScene extends CGFscene {
         this.cylinder = new MyCylinder(this, 16);
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this);
+        this.t=new MyRudder(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;  
@@ -181,6 +182,9 @@ class MyScene extends CGFscene {
         if (this.displayCubeMap)
             this.cubeMap.display();
         this.popMatrix();
+
+        this.rotate(Math.PI/2,0,0,1);
+        this.t.display();
 
         // ---- END Primitive drawing section
     }

@@ -114,29 +114,39 @@ class MyVehicle extends CGFobject {
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(0, 0, -0.2);
-        this.scene.scale(1, 0.75, 0.75);
+        //this.scene.translate(0, 0, -0.2);
 
-        // Display Upper Rudder
-        this.scene.pushMatrix();
-        this.scene.translate(0, 0.4, -2);
-        this.rudder.display();
-        this.scene.popMatrix();
+            // Display Upper Rudder
+            this.scene.pushMatrix();
+            this.scene.translate(0, 0.4, -2);
+            this.scene.scale(1, 0.75, 0.75);
+            this.rudder.display();
+            this.scene.popMatrix();
 
-        // Display Lower Rudder
-        this.scene.pushMatrix();
-        this.scene.translate(0, -0.4, -2);
-        this.scene.rotate(Math.PI, 1, 0, 0);
-        this.scene.rotate(Math.PI, 0, 1, 0);
-        this.rudder.display();
-        this.scene.popMatrix();
+            // Display Lower Rudder
+            this.scene.pushMatrix();
+            this.scene.translate(0, -0.4, -2);
+            this.scene.rotate(Math.PI, 1, 0, 0);
+            this.scene.rotate(Math.PI, 0, 1, 0);
+            this.scene.scale(1, 0.75, 0.75);
+            this.rudder.display();
+            this.scene.popMatrix();
 
-        // Display Left Rudder
-        this.scene.pushMatrix();
-        this.scene.translate(0, -10, -2);
-        this.scene.rotate(-Math.Pi/2, 0, 0, 1);
-        this.rudder.display();
-        this.scene.popMatrix();
+            // Display Left Rudder
+            this.scene.pushMatrix();
+            this.scene.translate(0.4,0,-2);
+            this.scene.rotate(3*Math.PI/2,0,0,1);
+            this.scene.scale(1, 0.75, 0.75);
+            this.rudder.display();
+            this.scene.popMatrix();
+
+            // Display Right Rudder
+            this.scene.pushMatrix();
+            this.scene.translate(-0.4,0,-2);
+            this.scene.rotate(Math.PI/2,0,0,1);
+            this.scene.scale(1, 0.75, 0.75);
+            this.rudder.display();
+            this.scene.popMatrix();
 
         this.scene.popMatrix();
 

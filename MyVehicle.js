@@ -9,8 +9,9 @@ class MyVehicle extends CGFobject {
         this.speed = 0;
         this.position = [0,10,0];
         this.body = new MySphere(scene, 16, 8);
+        this.waggonBody = new MyCylinder(scene, 16);
         this.waggonEnd = new MySphere(scene, 16, 8);
-        this.waggonBody = new MyCylinder(scene, 16)
+        this.rudder = new MyRudder(scene);
         this.scalef=1.0;
     }
 
@@ -47,7 +48,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(this.position[0], this.position[1], this.position[2]);
         this.scene.rotate(this.orientation,0,1,0);
         this.scene.scale(this.scalef,this.scalef,this.scalef);
-        
+
         // Display Body
         this.scene.pushMatrix();
         this.scene.scale(1,1,2);
@@ -77,6 +78,33 @@ class MyVehicle extends CGFobject {
         this.scene.scale(0.148, 0.148, 0.148);
         this.scene.rotate(Math.PI/2,1,0,0);
         this.waggonEnd.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0, -0.2);
+        this.scene.scale(1, 0.75, 0.75);
+
+        // Display Upper Rudder
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0.4, -2);
+        this.rudder.display();
+        this.scene.popMatrix();
+
+        // Display Lower Rudder
+        this.scene.pushMatrix();
+        this.scene.translate(0, -0.4, -2);
+        this.scene.rotate(Math.PI, 1, 0, 0);
+        this.scene.rotate(Math.PI, 0, 1, 0);
+        this.rudder.display();
+        this.scene.popMatrix();
+
+        // Display Left Rudder
+        this.scene.pushMatrix();
+        this.scene.translate(0, -10, -2);
+        this.scene.rotate(-Math.Pi/2, 0, 0, 1);
+        this.rudder.display();
+        this.scene.popMatrix();
+
         this.scene.popMatrix();
 
         this.scene.popMatrix();

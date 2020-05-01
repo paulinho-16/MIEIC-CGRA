@@ -28,7 +28,7 @@ class MyScene extends CGFscene {
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.cylinder = new MyCylinder(this, 16);
         this.cubeMap = new MyCubeMap(this);
-        this.vehicle = new MyVehicle(this, 3, 1);
+        this.vehicle = new MyVehicle(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;  
@@ -63,6 +63,13 @@ class MyScene extends CGFscene {
         this.mapMaterial.setTexture(this.plain);
         this.mapMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
+
+        this.defaultMaterial = new CGFappearance(this);
+        this.defaultMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+        this.defaultMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+        this.defaultMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+        this.defaultMaterial.setShininess(10.0);
+
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displaySphere = false;
@@ -82,10 +89,7 @@ class MyScene extends CGFscene {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
-        this.setAmbient(0.2, 0.4, 0.8, 1.0);
-        this.setDiffuse(0.2, 0.4, 0.8, 1.0);
-        this.setSpecular(0.2, 0.4, 0.8, 1.0);
-        this.setShininess(10.0);
+        this.defaultMaterial.apply();
     }
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
@@ -161,7 +165,7 @@ class MyScene extends CGFscene {
             this.cylinder.enableNormalViz();
         else
             this.cylinder.disableNormalViz();
-
+        
         this.setDefaultAppearance();
 
         this.vehicle.scaleVehicle(this.scaleFactor);

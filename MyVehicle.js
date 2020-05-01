@@ -3,14 +3,12 @@
 * @constructor
 */
 class MyVehicle extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene) {
         super(scene);
-        this.slices = slices;
-        this.stacks = stacks;
         this.orientation = 0;
         this.speed = 0;
         this.position = [0,0,0];
-        this.pyramid = new MyPyramid(scene, 3);
+        this.body = new MySphere(scene, 16, 8);
         this.scalef=1.0;
     }
 
@@ -43,6 +41,8 @@ class MyVehicle extends CGFobject {
     display() {
         this.scene.pushMatrix(); 
 
+        this.scene.scale(2,2,2);
+
         this.scene.translate(this.position[0], this.position[1], this.position[2]);
         this.scene.rotate(this.orientation,0,1,0);
 
@@ -52,7 +52,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0,0,-0.5);
         this.scene.rotate(Math.PI/2,1,0,0);
 
-        this.pyramid.display();
+        this.body.display();
         this.scene.popMatrix();
     }
 }

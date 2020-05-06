@@ -95,7 +95,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0, -1.07 , -0.5);
         this.scene.scale(0.15,0.15,1);
         this.scene.rotate(Math.PI/2,1,0,0);
-        this.scene.waggonMaterial.apply();
+        this.scene.greenMaterial.apply();
         this.waggonBody.display();
         this.scene.popMatrix();
 
@@ -104,7 +104,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0, -1.07, 0.5);
         this.scene.scale(0.148, 0.148, 0.148);
         this.scene.rotate(Math.PI/2,1,0,0);
-        this.scene.waggonMaterial.apply();
+        this.scene.greenMaterial.apply();
         this.waggonEnd.display();
         this.scene.popMatrix();
 
@@ -113,7 +113,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0, -1.07 , -0.5);
         this.scene.scale(0.148, 0.148, 0.148);
         this.scene.rotate(Math.PI/2,1,0,0);
-        this.scene.waggonMaterial.apply();
+        this.scene.greenMaterial.apply();
         this.waggonEnd.display();
         this.scene.popMatrix();
 
@@ -123,7 +123,7 @@ class MyVehicle extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(0, 0.4, -2);
         this.scene.scale(1, 0.75, 0.75);
-        this.scene.rudderMaterial.apply();
+        this.scene.greenMaterial.apply();
         if (this.scene.gui.isKeyPressed("KeyD"))
             this.scene.rotate(-Math.PI/6.0, 0, 1, 0);
         if (this.scene.gui.isKeyPressed("KeyA"))
@@ -137,7 +137,7 @@ class MyVehicle extends CGFobject {
         this.scene.rotate(Math.PI, 1, 0, 0);
         this.scene.rotate(Math.PI, 0, 1, 0);
         this.scene.scale(1, 0.75, 0.75);
-        this.scene.rudderMaterial.apply();
+        this.scene.greenMaterial.apply();
         if (this.scene.gui.isKeyPressed("KeyD"))
             this.scene.rotate(Math.PI/6.0, 0, 1, 0);
         if (this.scene.gui.isKeyPressed("KeyA"))
@@ -150,7 +150,7 @@ class MyVehicle extends CGFobject {
         this.scene.translate(0.4,0,-2);
         this.scene.rotate(3*Math.PI/2,0,0,1);
         this.scene.scale(1, 0.75, 0.75);
-        this.scene.rudderMaterial.apply();
+        this.scene.greenMaterial.apply();
         this.rudder.display();
         this.scene.popMatrix();
 
@@ -159,11 +159,12 @@ class MyVehicle extends CGFobject {
         this.scene.translate(-0.4,0,-2);
         this.scene.rotate(Math.PI/2,0,0,1);
         this.scene.scale(1, 0.75, 0.75);
-        this.scene.rudderMaterial.apply();
+        this.scene.greenMaterial.apply();
         this.rudder.display();
         this.scene.popMatrix();
 
-        this.scene.defaultMaterial.apply();
+        //this.scene.defaultMaterial.apply();
+        this.scene.lightgreenMaterial.apply();
 
         //Right Helix
         this.scene.pushMatrix();

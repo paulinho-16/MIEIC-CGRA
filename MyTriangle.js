@@ -25,6 +25,9 @@ class MyTriangle extends CGFobject {
 		for (let j = 0 ; j < 3 ; j++) {
 			this.normals.push(0,0,1);
 		}
+		for (let j = 0 ; j < 3 ; j++) {
+			this.normals.push(0,0,-1);
+		}
 
 		for (let j = 0 ; j < 3 ; j++) {
 			this.normals.push(0,0,-1);

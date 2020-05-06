@@ -125,6 +125,8 @@ class MyScene extends CGFscene {
     update(t){
         //To be done...
         this.checkKeys();
+        if (!this.autopilotafuncionarporra)
+            this.vehicle.previous=t;
         this.vehicle.update(t);
     }
     checkKeys() {
@@ -133,24 +135,30 @@ class MyScene extends CGFscene {
 
         // Check for key codes e.g. in https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
-            text += " W ";
-            this.vehicle.accelerate(0.1*this.speedFactor);
-            keysPressed = true;
+            if (!this.autopilotafuncionarporra)
+            {
+                text += " W ";
+                this.vehicle.accelerate(0.1*this.speedFactor);
+                keysPressed = true;
+            }
         }
         if (this.gui.isKeyPressed("KeyA")) {
-            text += " A ";
-            this.vehicle.turn(Math.PI/8);
-            keysPressed = true;
+            if (!this.autopilotafuncionarporra)
+            {    text += " A ";
+                this.vehicle.turn(Math.PI/8);
+                keysPressed = true;}
         }
         if (this.gui.isKeyPressed("KeyS")) {
-            text += " S ";
-            this.vehicle.accelerate(-0.1*this.speedFactor);
-            keysPressed = true;
+            if (!this.autopilotafuncionarporra)
+            {    text += " S ";
+                this.vehicle.accelerate(-0.1*this.speedFactor);
+                keysPressed = true;}
         }
         if (this.gui.isKeyPressed("KeyD")) {
-            text += " D ";
-            this.vehicle.turn(-Math.PI/8);
-            keysPressed = true;
+            if (!this.autopilotafuncionarporra)
+            {    text += " D ";
+                this.vehicle.turn(-Math.PI/8);
+                keysPressed = true;}
         }
         if (this.gui.isKeyPressed("KeyR")) {
             text += " R ";
@@ -163,6 +171,12 @@ class MyScene extends CGFscene {
                 this.vehicle.startAutoPilot();
                 keysPressed = true;
                 this.autopilotafuncionarporra = true;
+            }
+            else
+            {
+                this.vehicle.autopilot=false;
+                this.autopilotafuncionarporra = false;
+
             }
         }
         if (keysPressed)

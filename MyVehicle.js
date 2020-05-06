@@ -65,6 +65,7 @@ class MyVehicle extends CGFobject {
         this.helixAngle=Math.PI/2;
         this.autopilot = false;
         this.scene.autopilotafuncionarporra = false;
+        this.previous=0;
     }
 
     scaleVehicle(scaleFactor) {

@@ -106,6 +106,8 @@ class MyScene extends CGFscene {
         this.displayVehicle = true;
         this.selectedTexture = 1;
 
+        this.autopilotafuncionarporra = false; // APAGAR
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -156,9 +158,12 @@ class MyScene extends CGFscene {
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyP")) {
-            text += " P ";
-            this.vehicle.startAutoPilot();
-            keysPressed = true;
+            if (!this.autopilotafuncionarporra) {       // PERGUNTAR VARIAS CHAMADAS
+                text += " P ";
+                this.vehicle.startAutoPilot();
+                keysPressed = true;
+                this.autopilotafuncionarporra = true;
+            }
         }
         if (keysPressed)
             console.log(text);

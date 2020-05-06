@@ -105,6 +105,7 @@ class MyScene extends CGFscene {
         this.displayCubeMap = true;
         this.displayVehicle = true;
         this.selectedTexture = 1;
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -122,7 +123,7 @@ class MyScene extends CGFscene {
     update(t){
         //To be done...
         this.checkKeys();
-        this.vehicle.update();
+        this.vehicle.update(t);
     }
     checkKeys() {
         var text = "Keys pressed: ";
@@ -152,6 +153,11 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyR")) {
             text += " R ";
             this.vehicle.reset();
+            keysPressed = true;
+        }
+        if (this.gui.isKeyPressed("KeyP")) {
+            text += " P ";
+            this.vehicle.startAutoPilot();
             keysPressed = true;
         }
         if (keysPressed)

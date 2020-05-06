@@ -42,6 +42,7 @@ class MyScene extends CGFscene {
         this.mountain = new CGFtexture(this, 'images/Mountain.png');
         this.airshipBody = new CGFtexture(this, 'images/AirShipBody.jpeg');
         this.waggon = new CGFtexture(this, 'images/Waggon.jpg');
+        this.rudder = new CGFtexture(this, 'images/Rudder.png');
 
         //Arrays of textures and Textures ID
         this.textures = [this.default, this.plain, this.forest, this.sunset, this.mountain];
@@ -87,6 +88,14 @@ class MyScene extends CGFscene {
         this.waggonMaterial.setShininess(10.0);
         this.waggonMaterial.setTexture(this.waggon);
         this.waggonMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.rudderMaterial = new CGFappearance(this);
+        this.rudderMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+        this.rudderMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+        this.rudderMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+        this.rudderMaterial.setShininess(10.0);
+        this.rudderMaterial.setTexture(this.rudder);
+        this.rudderMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Objects connected to MyInterface
         this.displayAxis = true;

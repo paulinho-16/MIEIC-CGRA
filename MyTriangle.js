@@ -13,7 +13,10 @@ class MyTriangle extends CGFobject {
 		this.vertices = [
 			0, 0, 0,	 //0
 			1, 0, 0,	 //1
-			0, 1, 0, //2
+			0, 1, 0, 	 //2
+			0, 0, 0,	 //0
+			1, 0, 0,	 //1
+			0, 1, 0 	 //2
 		];
 
 		this.normals = [];
@@ -21,6 +24,9 @@ class MyTriangle extends CGFobject {
 		// Defining the normals:
 		for (let j = 0 ; j < 3 ; j++) {
 			this.normals.push(0,0,1);
+		}
+		for (let j = 0 ; j < 3 ; j++) {
+			this.normals.push(0,0,-1);
 		}
 
 		//Counter-clockwise reference of vertices

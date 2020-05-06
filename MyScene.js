@@ -106,7 +106,7 @@ class MyScene extends CGFscene {
         this.displayVehicle = true;
         this.selectedTexture = 1;
 
-        this.autopilotafuncionarporra = false; // APAGAR
+        this.autopilotON = false; // APAGAR
 
     }
     initLights() {
@@ -125,7 +125,7 @@ class MyScene extends CGFscene {
     update(t){
         //To be done...
         this.checkKeys();
-        if (!this.autopilotafuncionarporra)
+        if (!this.autopilotON)
             this.vehicle.previous=t;
         this.vehicle.update(t);
     }
@@ -135,7 +135,7 @@ class MyScene extends CGFscene {
 
         // Check for key codes e.g. in https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
-            if (!this.autopilotafuncionarporra)
+            if (!this.autopilotON)
             {
                 text += " W ";
                 this.vehicle.accelerate(0.1*this.speedFactor);
@@ -143,19 +143,19 @@ class MyScene extends CGFscene {
             }
         }
         if (this.gui.isKeyPressed("KeyA")) {
-            if (!this.autopilotafuncionarporra)
+            if (!this.autopilotON)
             {    text += " A ";
                 this.vehicle.turn(Math.PI/8);
                 keysPressed = true;}
         }
         if (this.gui.isKeyPressed("KeyS")) {
-            if (!this.autopilotafuncionarporra)
+            if (!this.autopilotON)
             {    text += " S ";
                 this.vehicle.accelerate(-0.1*this.speedFactor);
                 keysPressed = true;}
         }
         if (this.gui.isKeyPressed("KeyD")) {
-            if (!this.autopilotafuncionarporra)
+            if (!this.autopilotON)
             {    text += " D ";
                 this.vehicle.turn(-Math.PI/8);
                 keysPressed = true;}
@@ -166,17 +166,16 @@ class MyScene extends CGFscene {
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyP")) {
-            if (!this.autopilotafuncionarporra) {       // PERGUNTAR VARIAS CHAMADAS
+            if (!this.autopilotON) {       // PERGUNTAR VARIAS CHAMADAS
                 text += " P ";
                 this.vehicle.startAutoPilot();
                 keysPressed = true;
-                this.autopilotafuncionarporra = true;
+                this.autopilotON = true;
             }
             else
             {
                 this.vehicle.autopilot=false;
-                this.autopilotafuncionarporra = false;
-
+                this.autopilotON = false;
             }
         }
         if (keysPressed)

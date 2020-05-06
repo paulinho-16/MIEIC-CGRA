@@ -73,13 +73,11 @@ class MyVehicle extends CGFobject {
     }
 
     display() {
-
         this.scene.pushMatrix();
 
         this.scene.translate(this.position[0], this.position[1], this.position[2]);
         this.scene.rotate(this.orientation,0,1,0);
         this.scene.scale(this.scalef,this.scalef,this.scalef);
-
         this.airship.display(this.helixAngle);
 
         this.scene.popMatrix();

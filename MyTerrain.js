@@ -25,7 +25,7 @@ class MyTerrain extends CGFobject {
     this.terrainColor.bind(1);
     this.terrainHeight.bind(2);
 
-    this.scene.translate(0, -25, 0);
+    //this.scene.translate(0, -25, 0);
     this.scene.scale(50, 1, 50);
     this.scene.rotate(-Math.PI/2.0, 1, 0, 0);
 

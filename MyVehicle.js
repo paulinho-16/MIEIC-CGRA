@@ -33,7 +33,7 @@ class MyVehicle extends CGFobject {
         else{
             this.position[0] += this.speed*Math.sin(this.orientation);
             this.position[2] += this.speed*Math.cos(this.orientation);
-            this.helixAngle += this.speed;
+            this.helixAngle += this.speed + 1;
         }
         
     }

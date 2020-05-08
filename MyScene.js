@@ -29,6 +29,7 @@ class MyScene extends CGFscene {
         this.cylinder = new MyCylinder(this, 16);
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this);
+        this.terrain = new MyTerrain(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;  
@@ -115,7 +116,7 @@ class MyScene extends CGFscene {
         this.lights[0].enable();
         this.lights[0].update();
     }
-    initCameras() {
+    initCameras() {         // Zoomed Camera: 0.4 0.1 500
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 10, 0));
     }
     setDefaultAppearance() {
@@ -241,6 +242,8 @@ class MyScene extends CGFscene {
         if (this.displayCubeMap)
             this.cubeMap.display();
         this.popMatrix();
+
+        this.terrain.display();
 
         // ---- END Primitive drawing section
     }

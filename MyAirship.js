@@ -80,10 +80,14 @@ class MyAirship extends CGFobject {
     this.scene.translate(0, 0.4, -2);
     this.scene.scale(1, 0.75, 0.75);
     this.scene.greenMaterial.apply();
-    if (this.scene.gui.isKeyPressed("KeyD"))
-      this.scene.rotate(-Math.PI/6.0, 0, 1, 0);
-    if (this.scene.gui.isKeyPressed("KeyA") || this.scene.vehicle.autopilot)
+    if (this.scene.gui.isKeyPressed("KeyD")) {
       this.scene.rotate(Math.PI/6.0, 0, 1, 0);
+      this.scene.translate(-0.2, 0, 0);
+    }
+    if (this.scene.gui.isKeyPressed("KeyA") || this.scene.vehicle.autopilot) {
+      this.scene.rotate(-Math.PI/6.0, 0, 1, 0);
+      this.scene.translate(0.2, 0, 0);
+    }
     this.rudder.display();
     this.scene.popMatrix();
 
@@ -94,10 +98,14 @@ class MyAirship extends CGFobject {
     this.scene.rotate(Math.PI, 0, 1, 0);
     this.scene.scale(1, 0.75, 0.75);
     this.scene.greenMaterial.apply();
-    if (this.scene.gui.isKeyPressed("KeyD"))
-      this.scene.rotate(Math.PI/6.0, 0, 1, 0);
-    if (this.scene.gui.isKeyPressed("KeyA") || this.scene.vehicle.autopilot)
+    if (this.scene.gui.isKeyPressed("KeyD")) {
       this.scene.rotate(-Math.PI/6.0, 0, 1, 0);
+      this.scene.translate(-0.2, 0, 0);
+    }
+    if (this.scene.gui.isKeyPressed("KeyA") || this.scene.vehicle.autopilot) {
+      this.scene.rotate(Math.PI/6.0, 0, 1, 0);
+      this.scene.translate(-0.2, 0, 0);
+    }
     this.rudder.display();
     this.scene.popMatrix();
 

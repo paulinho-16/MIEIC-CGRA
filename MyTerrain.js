@@ -15,17 +15,16 @@ class MyTerrain extends CGFobject {
     this.terrainShader = new CGFshader(scene.gl, 'shaders/terrain.vert', 'shaders/terrain.frag');
 
     // Bind Preparations
-    this.terrainShader.setUniformsValues({ terrainTex : 1, terrainMap : 2 });
+    this.terrainShader.setUniformsValues({ terrainTex : 0, terrainMap : 1 });
   }
 
   display() {
     this.scene.setActiveShader(this.terrainShader);
     this.scene.pushMatrix();
 
-    this.terrainColor.bind(1);
-    this.terrainHeight.bind(2);
+    this.terrainColor.bind(0);
+    this.terrainHeight.bind(1);
 
-    //this.scene.translate(0, -25, 0);
     this.scene.scale(50, 1, 50);
     this.scene.rotate(-Math.PI/2.0, 1, 0, 0);
 

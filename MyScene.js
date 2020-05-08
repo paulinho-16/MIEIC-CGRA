@@ -41,9 +41,6 @@ class MyScene extends CGFscene {
         this.forest = new CGFtexture(this, 'images/Forest.png');
         this.sunset = new CGFtexture(this, 'images/Sunset.png');
         this.mountain = new CGFtexture(this, 'images/Mountain.png');
-        this.airshipBody = new CGFtexture(this, 'images/Airship_Body.png');
-        this.green = new CGFtexture(this, 'images/green.png');
-        this.lightgreen = new CGFtexture(this, 'images/light_green.png');
 
         //Arrays of textures and Textures ID
         this.textures = [this.default, this.plain, this.forest, this.sunset, this.mountain];
@@ -57,7 +54,6 @@ class MyScene extends CGFscene {
         this.material.setShininess(120);
         this.material.setTexture(this.earthTexture);
         this.material.setTextureWrap('REPEAT', 'REPEAT');
-        
     
         this.mapMaterial = new CGFappearance(this);
         this.mapMaterial.setAmbient(1.0, 1.0, 1.0, 1);
@@ -67,36 +63,11 @@ class MyScene extends CGFscene {
         this.mapMaterial.setTexture(this.plain);
         this.mapMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
-
         this.defaultMaterial = new CGFappearance(this);
         this.defaultMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
         this.defaultMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
         this.defaultMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
         this.defaultMaterial.setShininess(10.0);
-
-        this.airshipBodyMaterial = new CGFappearance(this);
-        this.airshipBodyMaterial.setAmbient(1.0, 1.0, 1.0, 1);
-		this.airshipBodyMaterial.setDiffuse(0.7, 0.7, 0.7, 1);
-		this.airshipBodyMaterial.setSpecular(0.0, 0.0, 0.0, 1);
-        this.airshipBodyMaterial.setShininess(10.0);
-        this.airshipBodyMaterial.setTexture(this.airshipBody);
-        this.airshipBodyMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-        this.greenMaterial = new CGFappearance(this);
-        this.greenMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
-        this.greenMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
-        this.greenMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
-        this.greenMaterial.setShininess(10.0);
-        this.greenMaterial.setTexture(this.green);
-        this.greenMaterial.setTextureWrap('REPEAT', 'REPEAT');
-
-        this.lightgreenMaterial = new CGFappearance(this);
-        this.lightgreenMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
-        this.lightgreenMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
-        this.lightgreenMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
-        this.lightgreenMaterial.setShininess(10.0);
-        this.lightgreenMaterial.setTexture(this.lightgreen);
-        this.lightgreenMaterial.setTextureWrap('REPEAT', 'REPEAT');
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -105,6 +76,7 @@ class MyScene extends CGFscene {
         this.displayNormals = false;
         this.displayCubeMap = true;
         this.displayVehicle = true;
+        this.displayTerrain = true;
         this.selectedTexture = 1;
 
         this.autopilotON = false; // APAGAR
@@ -224,26 +196,19 @@ class MyScene extends CGFscene {
             this.cylinder.enableNormalViz();
         else
             this.cylinder.disableNormalViz();
-        
-        this.pushMatrix();
-        this.vehicle.scaleVehicle(this.scaleFactor);
 
-        if (this.displayVehicle)
-        {
+        if (this.displayVehicle) {
             this.vehicle.display();
         }
-        this.popMatrix();
         
         this.setDefaultAppearance();
+        this.setGlobalAmbientLight(0.6,0.6,0.6,1);
 
-        this.pushMatrix();
-        this.mapMaterial.apply();
-        this.scale(50,50,50);
         if (this.displayCubeMap)
-            this.cubeMap.display();
-        this.popMatrix();
+            this.cubeMap.displayCubeMap();
 
-        this.terrain.display();
+        if (this.displayTerrain)
+            this.terrain.display();
 
         // ---- END Primitive drawing section
     }

@@ -33,7 +33,7 @@ class MyVehicle extends CGFobject {
         else{
             this.position[0] += this.speed*Math.sin(this.orientation);
             this.position[2] += this.speed*Math.cos(this.orientation);
-            this.helixAngle += this.speed + 1;
+            this.helixAngle += this.speed + 0.1;
         }
         
     }
@@ -75,6 +75,11 @@ class MyVehicle extends CGFobject {
     display() {
         this.scene.pushMatrix();
 
+        // General Transformations
+        this.scene.translate(0, 20, 0);
+        this.scaleVehicle(this.scene.scaleFactor);
+
+        // Variable Transformations
         this.scene.translate(this.position[0], this.position[1], this.position[2]);
         this.scene.rotate(this.orientation,0,1,0);
         this.scene.scale(this.scalef,this.scalef,this.scalef);

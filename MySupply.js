@@ -8,6 +8,7 @@ class MySupply extends CGFobject {
     super(scene);
     this.quad = new MyQuad(this.scene);
     initTextures();
+    initMaterials();
   }
 
   initTextures() {
@@ -17,31 +18,29 @@ class MySupply extends CGFobject {
   }
 
   initMaterials() {
-    initMaterials(scene) {
-      this.supplyFrontMaterial = new CGFappearance(scene);
-      this.supplyTopBottomMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
-      this.supplyTopBottomMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
-      this.supplyTopBottomMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
-      this.supplyTopBottomMaterial.setShininess(10.0);
-      this.supplyFrontMaterial.setTexture(this.supplyFront);
-      this.supplyFrontMaterial.setTextureWrap('REPEAT', 'REPEAT');
-  
-      this.supplyTopBottomMaterial = new CGFappearance(scene);
-      this.supplyTopBottomMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
-      this.supplyTopBottomMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
-      this.supplyTopBottomMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
-      this.supplyTopBottomMaterial.setShininess(10.0);
-      this.supplyTopBottomMaterial.setTexture(this.supplyTopBottom);
-      this.supplyTopBottomMaterial.setTextureWrap('REPEAT', 'REPEAT');
-  
-      this.supplySidesMaterial = new CGFappearance(scene);
-      this.supplySidesMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
-      this.supplySidesMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
-      this.supplySidesMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
-      this.supplySidesMaterial.setShininess(10.0);
-      this.supplySidesMaterial.setTexture(this.supplySides);
-      this.supplySidesMaterial.setTextureWrap('REPEAT', 'REPEAT');
-    }
+    this.supplyFrontMaterial = new CGFappearance(scene);
+    this.supplyTopBottomMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+    this.supplyTopBottomMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+    this.supplyTopBottomMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+    this.supplyTopBottomMaterial.setShininess(10.0);
+    this.supplyFrontMaterial.setTexture(this.supplyFront);
+    this.supplyFrontMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+    this.supplyTopBottomMaterial = new CGFappearance(scene);
+    this.supplyTopBottomMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+    this.supplyTopBottomMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+    this.supplyTopBottomMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+    this.supplyTopBottomMaterial.setShininess(10.0);
+    this.supplyTopBottomMaterial.setTexture(this.supplyTopBottom);
+    this.supplyTopBottomMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+    this.supplySidesMaterial = new CGFappearance(scene);
+    this.supplySidesMaterial.setAmbient(0.2, 0.4, 0.8, 1.0);
+    this.supplySidesMaterial.setDiffuse(0.2, 0.4, 0.8, 1.0);
+    this.supplySidesMaterial.setSpecular(0.2, 0.4, 0.8, 1.0);
+    this.supplySidesMaterial.setShininess(10.0);
+    this.supplySidesMaterial.setTexture(this.supplySides);
+    this.supplySidesMaterial.setTextureWrap('REPEAT', 'REPEAT');
   }
 
   display() {

@@ -30,7 +30,6 @@ class MyScene extends CGFscene {
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this);
         this.terrain = new MyTerrain(this);
-        this.supply = new MySupply(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;  
@@ -159,6 +158,18 @@ class MyScene extends CGFscene {
                 this.autopilotON = false;
             }
         }
+        if (this.gui.isKeyPressed("KeyL")) {
+            text += " L ";
+            for (let i=0;i<5;i++)
+            {
+                if (this.vehicle.supplies[i].state==SupplyStates.INACTIVE)
+                {
+                    this.vehicle.supplies[i].drop(this.vehicle.position);
+                    break;
+                }
+            }
+            keysPressed = true;
+        }
         if (keysPressed)
             console.log(text);
     }
@@ -184,11 +195,6 @@ class MyScene extends CGFscene {
 
         //this.setDefaultAppearance();
         this.material.apply();
-
-        this.pushMatrix();
-        this.translate(0.5,0.5,0.5);
-        this.supply.display();
-        this.popMatrix();
 
         // ---- BEGIN Primitive drawing section
 

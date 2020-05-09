@@ -30,6 +30,7 @@ class MyScene extends CGFscene {
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this);
         this.terrain = new MyTerrain(this);
+        this.supply = new MySupply(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;  
@@ -183,6 +184,11 @@ class MyScene extends CGFscene {
 
         //this.setDefaultAppearance();
         this.material.apply();
+
+        this.pushMatrix();
+        this.translate(0.5,0.5,0.5);
+        this.supply.display();
+        this.popMatrix();
 
         // ---- BEGIN Primitive drawing section
 

@@ -15,8 +15,6 @@ class MyVehicle extends CGFobject {
         this.autopilot = false;
         this.angularSpeed= 2*Math.PI / 5;
         this.center=[0,0,0];
-        this.supplies = [new MySupply(scene),new MySupply(scene),new MySupply(scene),new MySupply(scene),new MySupply(scene)];
-
         this.previous=0;
         this.deltaTime=0;
     }
@@ -25,7 +23,7 @@ class MyVehicle extends CGFobject {
         if (this.autopilot)
         {
             this.deltaTime = (t - this.previous) / 1000;
-            this.previous=t;
+            this.previous = t;
             this.deltaAngle = this.deltaTime * this.angularSpeed;
             this.turn(this.deltaAngle);
             this.position[0] = this.center[0] - 5*Math.cos(this.orientation);
@@ -37,11 +35,6 @@ class MyVehicle extends CGFobject {
             this.position[2] += this.speed*Math.cos(this.orientation);
             this.helixAngle += this.speed + 0.1;
         }
-        for (let i=0; i<5; i++)
-        {
-            this.supplies[i].update(this.scene);
-        }
-
     }
 
     startAutoPilot()

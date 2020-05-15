@@ -30,9 +30,11 @@ class MyScene extends CGFscene {
         this.cubeMap = new MyCubeMap(this);
         this.vehicle = new MyVehicle(this);
         this.terrain = new MyTerrain(this);
+        this.supplies = [new MySupply(this), new MySupply(this), new MySupply(this), new MySupply(this), new MySupply(this)];
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
-        this.selectedTexture = 1;  
+        this.selectedTexture = 1;
+        this.nSuppliesDelivered = 0;  
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
@@ -101,6 +103,8 @@ class MyScene extends CGFscene {
         if (!this.autopilotON)
             this.vehicle.previous=t;
         this.vehicle.update(t);
+        for (var i = 0; i < 5; i++)
+            this.supplies[i].update(t);
     }
     checkKeys() {
         var text = "Keys pressed: ";
@@ -142,6 +146,9 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyR")) {
             text += " R ";
             this.vehicle.reset();
+            for (var i = 0 ; i < 5 ; i++)
+                this.supplies[i].reset();
+            this.nSuppliesDelivered = 0;
             this.autopilotON = false;
             keysPressed = true;
         }
@@ -162,12 +169,13 @@ class MyScene extends CGFscene {
             text += " L ";
             for (let i=0;i<5;i++)
             {
-                if (this.vehicle.supplies[i].state==SupplyStates.INACTIVE)
+                if (this.supplies[i].state == SupplyStates.INACTIVE)
                 {
-                    this.vehicle.supplies[i].drop(this.vehicle.position);
+                    this.supplies[i].drop(this.vehicle.position);
                     break;
                 }
             }
+            this.nSuppliesDelivered++;
             keysPressed = true;
         }
         if (keysPressed)
@@ -215,6 +223,9 @@ class MyScene extends CGFscene {
         
         this.setDefaultAppearance();
         this.setGlobalAmbientLight(0.6,0.6,0.6,1);
+
+        for (var i = 0 ; i < 5 ; i++)
+            this.supplies[i].display();
 
         if (this.displayCubeMap)
             this.cubeMap.displayCubeMap();

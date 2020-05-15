@@ -146,7 +146,7 @@ class MyScene extends CGFscene {
             keysPressed = true;
         }
         if (this.gui.isKeyPressed("KeyP")) {
-            if (!this.autopilotON) {       // PERGUNTAR VARIAS CHAMADAS
+            if (!this.autopilotON) {
                 text += " P ";
                 this.vehicle.startAutoPilot();
                 keysPressed = true;

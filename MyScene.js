@@ -81,7 +81,7 @@ class MyScene extends CGFscene {
         this.displayTerrain = true;
         this.selectedTexture = 1;
 
-        this.autopilotON = false; // APAGAR
+        this.autopilotON = false;
 
     }
     initLights() {
@@ -100,8 +100,8 @@ class MyScene extends CGFscene {
     update(t){
         //To be done...
         this.checkKeys();
-        if (!this.autopilotON)
-            this.vehicle.previous=t;
+        //if (!this.autopilotON)
+        //  this.vehicle.previous = t;
         this.vehicle.update(t);
         for (var i = 0; i < 5; i++)
             this.supplies[i].update(t);

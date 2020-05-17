@@ -18,12 +18,13 @@ class MyVehicle extends CGFobject {
         this.center=[0,0,0];
         this.previous=0;
         this.deltaTime=0;
+        this.pos = 0;
     }
 
     update(t) {
+        this.deltaTime = (t - this.previous) / 1000;
         if (this.autopilot)
         {
-            this.deltaTime = (t - this.previous) / 1000;
             this.previous = t;
             this.deltaAngle = this.deltaTime * this.angularSpeed;
             this.turn(this.deltaAngle);
@@ -36,6 +37,13 @@ class MyVehicle extends CGFobject {
             this.position[2] += this.speed*Math.cos(this.orientation);
             this.helixAngle += this.speed + 0.1;
         }
+        this.flag.update(t);
+        this.pos += this.speed * this.deltaTime;
+        console.log(this.speed);
+        console.log(this.deltaTime);
+        console.log(this.pos);
+        this.flag.setPosition(this.pos);
+        this.previous = t;
     }
 
     startAutoPilot()
@@ -65,7 +73,8 @@ class MyVehicle extends CGFobject {
         this.helixAngle=Math.PI/2;
         this.autopilot = false;
         this.scene.autopilotafuncionarporra = false;
-        this.previous=0;
+        this.previous = 0;
+        this.pos = 0;
     }
 
     scaleVehicle(scaleFactor) {
@@ -90,7 +99,7 @@ class MyVehicle extends CGFobject {
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.scene.scale(3, 1.5, 1);
         this.scene.setDefaultAppearance();
-        this.flag.displayFlag();
+        this.flag.display();
 
         this.scene.popMatrix();
     }

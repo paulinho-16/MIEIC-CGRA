@@ -10,6 +10,7 @@ class MyVehicle extends CGFobject {
         this.speed = 0;
         this.position = [0,10,0];
         this.airship = new MyAirship(scene);
+        this.flag = new MyFlag(scene, 20);
         this.scalef = 1.0;
         this.helixAngle = Math.PI/2;
         this.autopilot = false;
@@ -30,7 +31,7 @@ class MyVehicle extends CGFobject {
             this.position[1] = this.center[1];
             this.position[2] = this.center[2] + 5*Math.sin(this.orientation);
         }
-        else{
+        else {
             this.position[0] += this.speed*Math.sin(this.orientation);
             this.position[2] += this.speed*Math.cos(this.orientation);
             this.helixAngle += this.speed + 0.1;
@@ -83,6 +84,13 @@ class MyVehicle extends CGFobject {
         this.scene.rotate(this.orientation,0,1,0);
         this.scene.scale(this.scalef,this.scalef,this.scalef);
         this.airship.display(this.helixAngle);
+
+        // Display Flag
+        this.scene.translate(0, 0, -5);
+        this.scene.rotate(Math.PI/2, 0, 1, 0);
+        this.scene.scale(3, 1.5, 1);
+        this.scene.setDefaultAppearance();
+        this.flag.displayFlag();
 
         this.scene.popMatrix();
     }

@@ -2,10 +2,11 @@
 precision highp float;
 #endif
 
-varying vec4 VertexCoords;
+varying vec3 vVertexPosition;
+varying vec2 vTextureCoord;
 
 void main() {
-    vec4 color=vec4(1.0 - VertexCoords.s, VertexCoords.s, 0.0, 1.0);
+    vec4 color=vec4(0.5 - vVertexPosition.s, 0.5 + vVertexPosition.s, 0.0, 1.0);
 
     gl_FragColor = color;
 }

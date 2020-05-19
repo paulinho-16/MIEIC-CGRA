@@ -75,14 +75,13 @@ class MyBillboard extends CGFobject {
         this.scene.popMatrix();
 
         // Supplies Bar
-        this.scene.pushMatrix();
         this.scene.setActiveShader(this.billboardShader);
+        this.scene.pushMatrix();
         this.scene.translate(0,1.3,0.01);
         this.scene.scale(1.5,0.2,1);
         this.plane.display();
-        this.scene.setActiveShader(this.scene.defaultShader);
         this.scene.popMatrix();
-
+        this.scene.setActiveShader(this.scene.defaultShader);
         this.scene.popMatrix();
         
         

@@ -92,7 +92,7 @@ class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(100, 60, 100), vec3.fromValues(0, 20, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(5, 10, 5), vec3.fromValues(-20, -10, -20));
     }
     setDefaultAppearance() {
         this.defaultMaterial.apply();

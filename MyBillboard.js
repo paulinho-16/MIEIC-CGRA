@@ -32,7 +32,9 @@ class MyBillboard extends CGFobject {
       }
 
       initShaders() {
-        this.billboardShader = new CGFshader(this.scene.gl, 'shaders/flag.vert', 'shaders/flag.frag');
+        this.billboardShader = new CGFshader(this.scene.gl, 'shaders/billboard.vert', 'shaders/billboard.frag');
+        this.billboardShader.setUniformsValues({ billboardTex : 1 });
+        this.billboardTexture.bind(1);
       }
 
     display() {

@@ -31,6 +31,7 @@ class MyScene extends CGFscene {
         this.vehicle = new MyVehicle(this);
         this.terrain = new MyTerrain(this);
         this.supplies = [new MySupply(this), new MySupply(this), new MySupply(this), new MySupply(this), new MySupply(this)];
+        this.billboard = new MyBillboard(this);
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;
@@ -200,6 +201,8 @@ class MyScene extends CGFscene {
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
+
+        this.billboard.display();
 
         //this.setDefaultAppearance();
         this.material.apply();

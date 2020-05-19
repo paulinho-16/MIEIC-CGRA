@@ -90,7 +90,7 @@ class MyScene extends CGFscene {
         this.lights[0].enable();
         this.lights[0].update();
     }
-    initCameras() {         // Zoomed Camera: 0.4 0.1 500
+    initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(100, 60, 100), vec3.fromValues(0, 20, 0));
     }
     setDefaultAppearance() {

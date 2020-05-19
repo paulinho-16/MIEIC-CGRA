@@ -5,7 +5,6 @@
 class MyVehicle extends CGFobject {
     constructor(scene) {
         super(scene);
-        this.scene=scene;
         this.orientation = 0;
         this.speed = 0;
         this.position = [0,10,0];
@@ -14,10 +13,10 @@ class MyVehicle extends CGFobject {
         this.scalef = 1.0;
         this.helixAngle = Math.PI/2;
         this.autopilot = false;
-        this.angularSpeed= 2*Math.PI / 5;
-        this.center=[0,0,0];
-        this.previous=0;
-        this.deltaTime=0;
+        this.angularSpeed = 2*Math.PI / 5;
+        this.center = [0,0,0];
+        this.previous = 0;
+        this.deltaTime = 0;
         this.pos = 0;
     }
 
@@ -39,9 +38,6 @@ class MyVehicle extends CGFobject {
         }
         this.flag.update(t);
         this.pos += this.speed * this.deltaTime;
-        console.log(this.speed);
-        console.log(this.deltaTime);
-        console.log(this.pos);
         this.flag.setPosition(this.pos);
         this.previous = t;
     }
@@ -72,7 +68,6 @@ class MyVehicle extends CGFobject {
         this.position = [0,10,0];
         this.helixAngle=Math.PI/2;
         this.autopilot = false;
-        this.scene.autopilotafuncionarporra = false;
         this.previous = 0;
         this.pos = 0;
     }
@@ -97,7 +92,6 @@ class MyVehicle extends CGFobject {
         // Display Flag
         this.scene.translate(0, 0, -5);
         this.scene.rotate(Math.PI/2, 0, 1, 0);
-        this.scene.scale(3, 1.5, 1);
         this.scene.setDefaultAppearance();
         this.flag.display();
 

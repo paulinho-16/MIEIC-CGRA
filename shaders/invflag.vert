@@ -19,7 +19,7 @@ void main() {
 
 	vec3 offset = vec3(0.0, 0.0, 0.0);
 
-	offset.z = sin(aVertexPosition.x * 18.0 - 0.5 * timeFactor - phase) * 0.2;
+	offset.z = sin(aVertexPosition.x * 15.0 - 0.5 * timeFactor - phase) * 0.1;
 
 	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition + offset, 1.0);
 }

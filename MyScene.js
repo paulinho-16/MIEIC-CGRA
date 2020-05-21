@@ -35,7 +35,7 @@ class MyScene extends CGFscene {
         this.speedFactor = 1.0;
         this.scaleFactor = 1.0;
         this.selectedTexture = 1;
-        this.nSuppliesDelivered = 0;  
+        this.nSuppliesDelivered = 0.0;  
 
         //Initialize Textures
         this.earthTexture = new CGFtexture(this, 'images/earth.jpg');
@@ -92,7 +92,7 @@ class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(5, 10, 5), vec3.fromValues(-20, -10, -20));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(100, 60, 100), vec3.fromValues(0, 20, 0));
     }
     setDefaultAppearance() {
         this.defaultMaterial.apply();
@@ -150,6 +150,7 @@ class MyScene extends CGFscene {
             for (var i = 0 ; i < 5 ; i++)
                 this.supplies[i].reset();
             this.nSuppliesDelivered = 0;
+            this.billboard.update();
             this.autopilotON = false;
             keysPressed = true;
         }
@@ -177,6 +178,7 @@ class MyScene extends CGFscene {
                 }
             }
             this.nSuppliesDelivered++;
+            this.billboard.update();
             keysPressed = true;
         }
         if (keysPressed)

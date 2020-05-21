@@ -14,11 +14,14 @@ class MyBillboard extends CGFobject {
     }
 
     update() {
-        this.flagShader.setUniformsValues({ supplies : this.scene.nsuppliesdelivered });
+        this.billboardShader.setUniformsValues({ supplies : this.scene.nSuppliesDelivered });
     }
 
     initTextures() {
         this.billboardTexture = new CGFtexture(this.scene, "images/billboard.png");
+        this.billboardBackTexture = new CGFtexture(this.scene, "images/billboard_back.png");
+        this.holdersTexture = new CGFtexture(this.scene, "images/wood.jpg");
+        
       }
     
       initMaterials() {
@@ -29,6 +32,22 @@ class MyBillboard extends CGFobject {
         this.billboardMaterial.setShininess(10.0);
         this.billboardMaterial.setTexture(this.billboardTexture);
         this.billboardMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.holdersMaterial = new CGFappearance(this.scene);
+        this.holdersMaterial.setAmbient(1.0, 1.0, 1.0, 1);
+        this.holdersMaterial.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.holdersMaterial.setSpecular(0.0, 0.0, 0.0, 1);
+        this.holdersMaterial.setShininess(10.0);
+        this.holdersMaterial.setTexture(this.holdersTexture);
+        this.holdersMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.billboardBackMaterial = new CGFappearance(this.scene);
+        this.billboardBackMaterial.setAmbient(1.0, 1.0, 1.0, 1);
+        this.billboardBackMaterial.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.billboardBackMaterial.setSpecular(0.0, 0.0, 0.0, 1);
+        this.billboardBackMaterial.setShininess(10.0);
+        this.billboardBackMaterial.setTexture(this.billboardBackTexture);
+        this.billboardBackMaterial.setTextureWrap('REPEAT', 'REPEAT');
       }
 
       initShaders() {
@@ -54,12 +73,14 @@ class MyBillboard extends CGFobject {
 
         // Billboard(Back)
         this.scene.pushMatrix();
+        this.billboardBackMaterial.apply();
         this.scene.rotate(Math.PI,0,1,0);
         this.scene.translate(0,1.5,0);
         this.scene.scale(2,1,1);
         this.plane.display();
         this.scene.popMatrix();
 
+        this.holdersMaterial.apply();
         // First Holder
         this.scene.pushMatrix();
         this.scene.translate(-0.95,0,0);
@@ -74,6 +95,8 @@ class MyBillboard extends CGFobject {
         this.planeholder.display();
         this.scene.popMatrix();
 
+        this.scene.defaultMaterial.apply();
+
         // Supplies Bar
         this.scene.setActiveShader(this.billboardShader);
         this.scene.pushMatrix();
@@ -83,7 +106,6 @@ class MyBillboard extends CGFobject {
         this.scene.popMatrix();
         this.scene.setActiveShader(this.scene.defaultShader);
         this.scene.popMatrix();
-        
         
     }
 }

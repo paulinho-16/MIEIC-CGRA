@@ -14,13 +14,13 @@ void main() {
 
     vec4 color;
 
-    if (1.0-(0.2*supplies)>vVertexPosition.x+0.5)
+    if ((0.2*supplies)<vVertexPosition.x+0.5)
     {
-        color=vec4(0.5 - vVertexPosition.s, 0.5 + vVertexPosition.s, 0.0, 1.0);    
+        color=vec4(0.5, 0.5, 0.5, 1.0);   
     }
     else
     {
-        color=vec4(0.5, 0.5, 0.5, 1.0);   
+        color=vec4(0.5 - vVertexPosition.s, 0.5 + vVertexPosition.s, 0.0, 1.0); 
     }
 
     gl_FragColor = color;

@@ -23,6 +23,7 @@ class MyVehicle extends CGFobject {
     update(t) {
         // Calculate Elapsed Time
         this.deltaTime = (t - this.previous) / 1000;
+        console.log(this.deltaTime);
         if (this.autopilot)     // Auto-Pilot Updates
         {
             this.previous = t;
@@ -83,7 +84,7 @@ class MyVehicle extends CGFobject {
         this.scene.pushMatrix();
 
         // General Transformations
-        this.scene.translate(0, 20, 0);
+        //this.scene.translate(0, 20, 0);
         this.scaleVehicle(this.scene.scaleFactor);
 
         // Variable Transformations

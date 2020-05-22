@@ -17,10 +17,10 @@ class MySupply extends CGFobject {
     this.chest = new MyChest(this.scene);
     this.landedChest = new MyLandedChest(this.scene);
     this.state = SupplyStates.INACTIVE;
-    this.position = [0,28.0,0];
+    this.position = [0,10.0,0];
     this.previous = 0;
     this.deltaTime = 0;
-    this.fallSpeed = 28.0 / 3.0;
+    this.fallSpeed = 10.0 / 3.0;
   }
 
   update(t)
@@ -57,7 +57,7 @@ class MySupply extends CGFobject {
   // After reset, Supply becomes INACTIVE
   reset() {
     this.state = SupplyStates.INACTIVE;
-    this.position = [0,28.0,0];
+    this.position = [0,10.0,0];
   }
 
   display() {

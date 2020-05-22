@@ -74,7 +74,7 @@ class MyScene extends CGFscene {
         this.defaultMaterial.setShininess(10.0);
 
         //Objects connected to MyInterface
-        this.displayAxis = true;
+        this.displayAxis = false;
         this.displaySphere = false;
         this.displayCylinder = false;
         this.displayCubeMap = true;
@@ -93,7 +93,7 @@ class MyScene extends CGFscene {
     }
 
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(100, 60, 100), vec3.fromValues(0, 20, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(50, 50, 50), vec3.fromValues(0, 5, 0));
     }
 
     setDefaultAppearance() {
@@ -202,7 +202,6 @@ class MyScene extends CGFscene {
         if (this.displayAxis)
             this.axis.display();
 
-        this.billboard.display();
 
         this.material.apply();
 
@@ -213,10 +212,6 @@ class MyScene extends CGFscene {
         if (this.displayCylinder)
             this.cylinder.display();
 
-        if (this.displayVehicle) {
-            this.vehicle.display();
-        }
-        
         this.setDefaultAppearance();
         this.setGlobalAmbientLight(0.6,0.6,0.6,1);
 
@@ -226,8 +221,16 @@ class MyScene extends CGFscene {
         if (this.displayCubeMap)
             this.cubeMap.displayCubeMap();
 
+        if (this.displayVehicle) {
+            this.vehicle.display();
+        }
+
+        this.billboard.display();
+
         if (this.displayTerrain)
             this.terrain.display();
+
+        this.setActiveShader(this.defaultShader);
 
         // ---- END Primitive drawing section
     }

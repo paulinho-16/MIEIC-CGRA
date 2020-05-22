@@ -103,7 +103,7 @@ class MyBillboard extends CGFobject {
     this.scene.scale(1.5,0.2,1);
     this.plane.display();
     this.scene.popMatrix();
-    this.scene.setActiveShader(this.scene.defaultShader);
+    //this.scene.setActiveShader(this.scene.defaultShader);
     this.scene.popMatrix();
   }
 }

@@ -81,12 +81,12 @@ class MyScene extends CGFscene {
         this.displayVehicle = true;
         this.displayTerrain = true;
         this.displayBillboard = true;
+        this.playMusic = true;
         this.selectedTexture = 1;
 
         this.autopilotON = false;
 
         this.audioMineCraft = new Audio("music/C418.mp3");
-        this.audioMineCraft.play();
     }
 
     initLights() {
@@ -202,6 +202,11 @@ class MyScene extends CGFscene {
         this.loadIdentity();
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
+
+        if (this.playMusic)
+            this.audioMineCraft.play();
+        else
+            this.audioMineCraft.pause();
         
         if (this.displayAxis)
             this.axis.display();

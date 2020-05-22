@@ -29,6 +29,7 @@ class MyInterface extends CGFinterface {
         this.gui.add(this.scene, 'displayBillboard').name('Display Billboard');
         this.gui.add(this.scene, 'speedFactor', 0.1, 3.0).name('Speed Factor');
         this.gui.add(this.scene, 'scaleFactor', 0.5, 3.0).name('Scale Factor');
+        this.gui.add(this.scene, 'playMusic', 0.5, 3.0).name('Play Music');
         
         this.initKeys();
 

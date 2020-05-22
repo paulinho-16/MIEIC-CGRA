@@ -80,6 +80,7 @@ class MyScene extends CGFscene {
         this.displayCubeMap = true;
         this.displayVehicle = true;
         this.displayTerrain = true;
+        this.displayBillboard = true;
         this.selectedTexture = 1;
 
         this.autopilotON = false;
@@ -168,7 +169,7 @@ class MyScene extends CGFscene {
         }
         if (this.gui.isKeyPressed("KeyL")) {
             text += " L ";
-            for (let i=0;i<5;i++)
+            for (let i = 0;i < 5;i++)
             {
                 if (this.supplies[i].state == SupplyStates.INACTIVE)
                 {
@@ -221,11 +222,11 @@ class MyScene extends CGFscene {
         if (this.displayCubeMap)
             this.cubeMap.displayCubeMap();
 
-        if (this.displayVehicle) {
+        if (this.displayVehicle)
             this.vehicle.display();
-        }
 
-        this.billboard.display();
+        if (this.displayBillboard)
+            this.billboard.display();
 
         if (this.displayTerrain)
             this.terrain.display();

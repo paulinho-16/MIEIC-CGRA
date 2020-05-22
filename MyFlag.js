@@ -32,6 +32,7 @@ class MyFlag extends CGFobject {
   initShaders() {
     this.flagShader = new CGFshader(this.scene.gl, 'shaders/flag.vert', 'shaders/flag.frag');
     this.invflagShader = new CGFshader(this.scene.gl, 'shaders/invflag.vert', 'shaders/flag.frag');
+    
     // Bind Preparations
     this.flagShader.setUniformsValues({ flagTex : 0});
     this.invflagShader.setUniformsValues({ flagTex : 0});

@@ -114,7 +114,7 @@ class MyAirship extends CGFobject {
     this.scene.translate(0, 0.4, -2);
     this.scene.scale(1, 0.75, 0.75);
     this.greenMaterial.apply();
-    if (this.scene.gui.isKeyPressed("KeyD")) {
+    if (this.scene.gui.isKeyPressed("KeyD") && !this.scene.vehicle.autopilot) {
       this.scene.rotate(Math.PI/6.0, 0, 1, 0);
       this.scene.translate(-0.2, 0, 0);
     }
@@ -132,7 +132,7 @@ class MyAirship extends CGFobject {
     this.scene.rotate(Math.PI, 0, 1, 0);
     this.scene.scale(1, 0.75, 0.75);
     this.greenMaterial.apply();
-    if (this.scene.gui.isKeyPressed("KeyD")) {
+    if (this.scene.gui.isKeyPressed("KeyD") && !this.scene.vehicle.autopilot) {
       this.scene.rotate(-Math.PI/6.0, 0, 1, 0);
       this.scene.translate(-0.2, 0, 0);
     }
@@ -163,7 +163,7 @@ class MyAirship extends CGFobject {
 
     this.lightgreenMaterial.apply();
 
-    //Right Helix
+    // Right Helix
     this.scene.pushMatrix();
     this.scene.translate(0.2, -1 , -0.35);
     this.scene.scale(0.06,0.05,0.15);
@@ -171,8 +171,7 @@ class MyAirship extends CGFobject {
     this.smallWaggon.display();
     this.scene.popMatrix();
 
-
-    //Left Helix
+    // Left Helix
     this.scene.pushMatrix();
     this.scene.translate(0.2, -1 , -0.35);
     this.scene.scale(0.06,0.05,0.15);
@@ -181,7 +180,8 @@ class MyAirship extends CGFobject {
     this.scene.popMatrix();
 
     //--------------Helixes Movement-----------------
-    //Helix Rotation Left
+
+    // Helix Rotation Left
     this.scene.pushMatrix();
     
     this.scene.translate(0.2, -1.05 , -0.65);
@@ -191,7 +191,7 @@ class MyAirship extends CGFobject {
     
     this.scene.popMatrix();
     
-    //Helix Rotation Right
+    // Helix Rotation Right
     this.scene.pushMatrix();
         
     this.scene.translate(-0.2, -1.05 , -0.65);

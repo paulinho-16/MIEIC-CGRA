@@ -21,17 +21,18 @@ class MyVehicle extends CGFobject {
     }
 
     update(t) {
+        // Calculate Elapsed Time
         this.deltaTime = (t - this.previous) / 1000;
-        if (this.autopilot)
+        if (this.autopilot)     // Auto-Pilot Updates
         {
             this.previous = t;
             this.deltaAngle = this.deltaTime * this.angularSpeed;
             this.turn(this.deltaAngle);
-            this.position[0] = this.center[0] - 5*Math.cos(this.orientation);
+            this.position[0] = this.center[0] - 5 * Math.cos(this.orientation);
             this.position[1] = this.center[1];
-            this.position[2] = this.center[2] + 5*Math.sin(this.orientation);
+            this.position[2] = this.center[2] + 5 * Math.sin(this.orientation);
         }
-        else {
+        else {          // Manual Updates
             this.position[0] += this.speed*Math.sin(this.orientation);
             this.position[2] += this.speed*Math.cos(this.orientation);
             this.helixAngle += this.speed + 0.1;
@@ -42,6 +43,7 @@ class MyVehicle extends CGFobject {
         this.previous = t;
     }
 
+    // Auto-Pilot Preparations
     startAutoPilot()
     {
         this.center = [0, 0, 0];
@@ -62,6 +64,7 @@ class MyVehicle extends CGFobject {
             this.speed = 0;
     }
 
+    // After Reset, turn off Auto-Pilot, set initial position and initial orientation
     reset() {
         this.orientation = 0;
         this.speed = 0;

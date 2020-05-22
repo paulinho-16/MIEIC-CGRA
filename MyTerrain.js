@@ -18,6 +18,7 @@ class MyTerrain extends CGFobject {
 
   initShaders() {
     this.terrainShader = new CGFshader(this.scene.gl, 'shaders/terrain.vert', 'shaders/terrain.frag');
+
     // Bind Preparations
     this.terrainShader.setUniformsValues({ terrainTex : 0, terrainMap : 1 });
   }
@@ -26,6 +27,7 @@ class MyTerrain extends CGFobject {
     this.scene.setActiveShader(this.terrainShader);
     this.scene.pushMatrix();
 
+    // Texture Binds
     this.terrainColor.bind(0);
     this.terrainHeight.bind(1);
 

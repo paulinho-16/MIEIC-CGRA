@@ -6,6 +6,7 @@ class MyScene extends CGFscene {
     constructor() {
         super();
     }
+
     init(application) {
         super.init(application);
         this.initCameras();
@@ -76,42 +77,40 @@ class MyScene extends CGFscene {
         this.displayAxis = true;
         this.displaySphere = false;
         this.displayCylinder = false;
-        this.displayNormals = false;
         this.displayCubeMap = true;
         this.displayVehicle = true;
         this.displayTerrain = true;
         this.selectedTexture = 1;
 
         this.autopilotON = false;
-
     }
+
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[0].enable();
         this.lights[0].update();
     }
+
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(100, 60, 100), vec3.fromValues(0, 20, 0));
     }
+
     setDefaultAppearance() {
         this.defaultMaterial.apply();
     }
-    // called periodically (as per setUpdatePeriod() in init())
-    update(t){
-        //To be done...
+
+    update(t) {
         this.checkKeys();
-        //if (!this.autopilotON)
-        //  this.vehicle.previous = t;
         this.vehicle.update(t);
         for (var i = 0; i < 5; i++)
             this.supplies[i].update(t);
     }
+
     checkKeys() {
         var text = "Keys pressed: ";
         var keysPressed = false;
 
-        // Check for key codes e.g. in https://keycode.info/
         if (this.gui.isKeyPressed("KeyW")) {
             if (!this.autopilotON)
             {
@@ -200,27 +199,19 @@ class MyScene extends CGFscene {
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
         
-        // Draw axis
         if (this.displayAxis)
             this.axis.display();
 
         this.billboard.display();
 
-        //this.setDefaultAppearance();
         this.material.apply();
 
         // ---- BEGIN Primitive drawing section
-
-        //This sphere does not have defined texture coordinates
 
         if (this.displaySphere)
             this.incompleteSphere.display();
         if (this.displayCylinder)
             this.cylinder.display();
-        if (this.displayNormals)
-            this.cylinder.enableNormalViz();
-        else
-            this.cylinder.disableNormalViz();
 
         if (this.displayVehicle) {
             this.vehicle.display();

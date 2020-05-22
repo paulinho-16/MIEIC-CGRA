@@ -84,6 +84,9 @@ class MyScene extends CGFscene {
         this.selectedTexture = 1;
 
         this.autopilotON = false;
+
+        this.audioMineCraft = new Audio("music/C418.mp3");
+        this.audioMineCraft.play();
     }
 
     initLights() {

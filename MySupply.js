@@ -50,7 +50,7 @@ class MySupply extends CGFobject {
   // The supply reached the ground
   land()
   {
-    this.position[1] = 0.5;
+    this.position[1] = 0.01;
     this.state = SupplyStates.LANDED;
   }
 
